@@ -8,7 +8,7 @@ const connect = function () {
 
   // update the connect function to handle incoming data and console.log it for the player
   conn.on("connect", () => {
-    console.log("what do i log here?")
+    console.log("successfully connected to game server");
     // console.log(conn);
   })
 
@@ -16,6 +16,10 @@ const connect = function () {
   conn.on('data', (data) => {
     console.log(data.toString());
     conn.end();
+  });
+
+  conn.on('connect', () => {
+    conn.write('HName: KMG');
   });
 
   // interpret incoming data as text
